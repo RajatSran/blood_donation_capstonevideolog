@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #c74816;
+        }
+
+        input {
+           font-size: 14px; 
+        }
+
+        textarea {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#">Admin</a></li>
+        <li><a href="blooddonation">Entries</a></li>
+    </ul><br>
+    <form action="super" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Form for blood donation</h1>
+        <h3><label for="name">Full Name</label></h3>
+        <input type="text" id="name" name="name"><br>
+        <h3><label for="age">Age</label></h3>
+        <input type="number" id="age" name="age" step="any">
+        <h3><label for="weight">body weight</label></h3>
+        <input type="number" id="weight" name="weight" step="any">
+        <h3>Select your blood group</h3>
+        <input list="bloodgroup" name="bloodgroup">
+        <datalist id="bloodgroup">
+            <option value="A+">
+            <option value="O+">
+            <option value="B+">
+            <option value="AB+">
+            <option value="A-">
+            <option value="O-">
+            <option value="B-">
+            <option value="AB-">
+        </datalist><br><br>
+
+        <h3>In the last 6 months have you had any history of the following :</h3>
+        <input type="checkbox" id="chk1" name="chk1" value="True">
+        <label for="chk1"> Unexplained weight loss</label><br>
+        <input type="checkbox" id="chk2" name="chk2" value="True">
+        <label for="chk2"> Repeated Diarrhea</label><br>
+        <input type="checkbox" id="chk3" name="chk3" value="True">
+        <label for="chk3">Swollen Glands</label><br>
+        <input type="checkbox" id="chk4" name="chk4" value="True">
+        <label for="chk4">Continuous low – grade fever</label><br><br>
+       
+        <h3>Gender</h3>
+        <input type="radio" id="rd1" name="rd" value="male">
+        <label for="male">male</label><br>
+        <input type="radio" id="rd2" name="rd" value="female">
+        <label for="female">female</label><br>
+        <input type="radio" id="rd3" name="rd" value="other">
+        <label for="other">female</label><br><br> 
+        
+        <h3><label for="img">Upload a picture of your aadhaar card</label><br></h3>
+        <input type="file" id="img" name="img" accept="image/*">
+
+        <h3><label for="date">Date</label></h3>
+        <input type="date" id="date" name="date"><br><br>
+
+        <input type="submit" name="action" value="Insert">&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="action" value="Delete">&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="action" value="Update"><br>
+    </form>
+</body>
+</html>
